@@ -8,23 +8,71 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Welcome to DocSpot</h1>
+  <div class="container">
+    <h1>Welcome to DocSpot</h1>
+    <p>Your seamless healthcare appointment booking system.</p>
 
-  <h2>Register</h2>
-  <form id="registerForm">
-    <input type="text" id="regName" placeholder="Name" required>
-    <input type="email" id="regEmail" placeholder="Email" required>
-    <input type="password" id="regPassword" placeholder="Password" required>
-    <button type="submit">Register</button>
-  </form>
+    <h2>Register</h2>
+    <form id="registerForm">
+      <input type="text" id="regName" placeholder="Name" required>
+      <input type="email" id="regEmail" placeholder="Email" required>
+      <input type="password" id="regPassword" placeholder="Password" required>
+      <button type="submit">Register</button>
+    </form>
 
-  <h2>Login</h2>
-  <form id="loginForm">
-    <input type="email" id="loginEmail" placeholder="Email" required>
-    <input type="password" id="loginPassword" placeholder="Password" required>
-    <button type="submit">Login</button>
-  </form>
+    <h2>Login</h2>
+    <form id="loginForm">
+      <input type="email" id="loginEmail" placeholder="Email" required>
+      <input type="password" id="loginPassword" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
 
-  <script src="allPages.js"></script>
+    <h2>Or Visit a Dashboard Directly</h2>
+    <div class="nav-links">
+      <a href="user.html" class="btn">User Dashboard</a><break>
+      <a href="doctor.html" class="btn">Doctor Dashboard</a><break>
+      <a href="admin.html" class="btn">Admin Dashboard</a>
+    </div>
+  </div>
+
+  <script>
+    // Register form logic
+    document.getElementById('registerForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById('regName').value;
+      const email = document.getElementById('regEmail').value;
+      const password = document.getElementById('regPassword').value;
+
+      if (name && email && password) {
+        alert('User registered successfully! (Note: This is a local demo only)');
+        document.getElementById('registerForm').reset();
+      } else {
+        alert('Please fill out all registration fields');
+      }
+    });
+
+    // Login form logic
+    document.getElementById('loginForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+
+      if (!email || !password) {
+        alert('Please enter valid credentials');
+        return;
+      }
+
+      // Simulated role-based login using keywords in email
+      if (email.toLowerCase().includes('admin')) {
+        window.location.href = 'admin.html';
+      } else if (email.toLowerCase().includes('doc')) {
+        window.location.href = 'doctor.html';
+      } else {
+        window.location.href = 'user.html';
+      }
+    });
+  </script>
 </body>
 </html>
